@@ -35,10 +35,12 @@ if __name__ == '__main__':
 else:
     # When imported as a module do what we need to do to find the epicsdbbuilder
     # before then importing it.
-    from . import builder_path
-
+    builder = os.environ.get('EPICSDBBUILDER', False)
+    if not builder:
+        from . import builder_path
+        builder = builder_path.path
     # Initialise the Db Builder and add our own DBD file
-    epicsdbbuilder = import_builder(builder_path.path)
+    epicsdbbuilder = import_builder(builder)
 
     # Complete the job by initialising the builder and loading our own DBD file.
     epicsdbbuilder.InitialiseDbd(os.environ['EPICS_BASE'])

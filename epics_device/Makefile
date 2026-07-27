@@ -3,8 +3,6 @@ include $(TOP)/configure/CONFIG
 
 export EPICSDBBUILDER
 
-USR_LIBS = epicsdbbuilder
-
 install: builder_path.py
 
 builder_path.py: builder.py $(TOP)/configure/CONFIG_SITE epicsdbbuilder venv
@@ -15,7 +13,6 @@ epicsdbbuilder: venv
 
 venv:
 	$(PYTHON) -m venv .venv
-	
 
 clean:
 	rm -f builder_path.py *.pyc

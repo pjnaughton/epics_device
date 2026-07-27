@@ -6,7 +6,7 @@ export EPICSDBBUILDER
 install: builder_path.py
 
 builder_path.py: builder.py $(TOP)/configure/CONFIG_SITE
-	$(PYTHON) $< >$@
+	python3 $< >$@
 
 clean:
 	rm -f builder_path.py *.pyc

@@ -4,7 +4,7 @@ include $(TOP)/configure/CONFIG
 install: builder_path.py
 
 builder_path.py: builder.py $(TOP)/configure/CONFIG_SITE
-	.venv/bin/python3 $< >$@
+	$(PYTHON) $< >$@
 
 clean:
 	rm -f builder_path.py *.pyc
